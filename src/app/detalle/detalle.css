@@ -1,0 +1,23 @@
+.hero-detalle {
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay-detalle {
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+.letra-texto {
+  white-space: pre-wrap;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.letra-preview {
+  max-height: 150px;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, black 60%, transparent);
+}
