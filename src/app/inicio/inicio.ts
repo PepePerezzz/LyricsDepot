@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Cancion } from '../models/cancion';
+import { CancionCard } from '../cancion-card/cancion-card';
+
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CancionCard],
   templateUrl: './inicio.html',
   styleUrl: './inicio.css'
 })
+
 export class Inicio {
 
   noticiaDestacada = {
@@ -66,6 +70,10 @@ export class Inicio {
 
   togglePublicidad() {
   this.mostrarPublicidad = !this.mostrarPublicidad;
-}
+  }
+
+  onFavoritoAgregado(cancion: Cancion) {
+  console.log('Agregado a favoritos:', cancion.titulo);
+  }
 }
 

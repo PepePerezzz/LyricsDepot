@@ -8,5 +8,7 @@ export const routes: Routes = [
   { path: 'buscador', loadComponent: () => import('./buscador/buscador').then(m => m.Buscador) },
   { path: 'contacto', loadComponent: () => import('./contacto/contacto').then(m => m.Contacto) },
   { path: 'perfil', loadComponent: () => import('./perfil/perfil').then(m => m.Perfil) },
-  { path: '**', loadComponent: () => import('./not-found/not-found').then(m => m.NotFound) }
+  { path: '**', loadComponent: () => import('./not-found/not-found').then(m => m.NotFound) },
+
+  { path: 'subir-letra', loadComponent: () => import('./subir-letra/subir-letra').then(m => m.SubirLetra) }
 ];
