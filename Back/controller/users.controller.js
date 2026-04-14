@@ -52,7 +52,7 @@ const loginIn= async (req,res)=>{
 const obtenerDatos = async (req,res)=>{
     try{
         const {id}=req.body;
-        const persona= model.buscar(id);
+        const persona= await model.buscar(id);
         if(!persona){
             return res.status(400).json({mesaje: "id no encontrado"}); 
         }

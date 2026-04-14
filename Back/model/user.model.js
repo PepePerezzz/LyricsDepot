@@ -43,7 +43,7 @@ async function buscar(id) {
     if(rows.length==0){
         return null;
     }
-    persona={
+    const persona={
         id:rows[0].id,
         nombre:rows[0].nombre,
         correo: rows[0].correo,
