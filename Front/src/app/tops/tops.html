@@ -1,1 +1,34 @@
-<p>tops works!</p>
+<div class="container mt-4">
+
+  <h4 class="fw-bold mb-3">🎵 Top Canciones</h4>
+
+  <div class="card shadow-sm">
+    <ul class="list-group list-group-flush">
+
+      @if(canciones.length === 0) {
+        <li class="alert alert-secondary">
+          Cargando canciones...
+        </li>
+      }
+
+      @for (cancion of canciones; track cancion.id) {
+        <li class="list-group-item d-flex align-items-center gap-3">
+
+          <span class="fw-bold text-muted" style="width:24px">
+            {{ cancion.posicion }}
+          </span>
+
+          <img [src]="cancion.imagen" width="50" height="50" class="rounded">
+
+          <div>
+            <p class="mb-0 fw-semibold">{{ cancion.titulo }}</p>
+            <small class="text-muted">{{ cancion.artista }}</small>
+          </div>
+
+        </li>
+      }
+
+    </ul>
+  </div>
+
+</div>

@@ -1,1 +1,38 @@
-<p>artistas works!</p>
+<div class="container mt-4">
+
+  <h4 class="fw-bold mb-3">🎤 Top Artistas</h4>
+
+  <div class="row g-3">
+
+    @if(artistas.length === 0) {
+      <div class="col-12">
+        <div class="alert alert-secondary">
+          Cargando artistas...
+        </div>
+      </div>
+    }
+
+    @for (artista of artistas; track artista.id) {
+      <div class="col-md-4">
+
+        <div class="card h-100 shadow-sm text-center p-3">
+
+          <img [src]="artista.imagen"
+               class="rounded-circle mx-auto mb-3"
+               width="100" height="100">
+
+          <h5 class="fw-bold">{{ artista.nombre }}</h5>
+          <p class="text-muted">{{ artista.genero }}</p>
+
+          <button class="btn btn-outline-dark btn-sm">
+            Ver más
+          </button>
+
+        </div>
+
+      </div>
+    }
+
+  </div>
+
+</div>
