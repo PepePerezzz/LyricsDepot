@@ -1,6 +1,34 @@
-<div>
-  @for (cancion of resultados; track cancion.id) {
-    <p>{{ cancion.titulo }}</p>
-    <p>{{ cancion.artista }}</p>
-  }
+<div class="card shadow-sm mt-3">
+  <ul class="list-group list-group-flush">
+
+    @if (resultados.length === 0) {
+      <li class="list-group-item text-center text-muted">
+        Sin resultados
+      </li>
+    }
+
+    @for (cancion of resultados; track cancion.id) {
+      <li class="list-group-item d-flex align-items-center gap-3">
+
+
+        <div
+          class="rounded bg-secondary d-flex align-items-center justify-content-center text-white"
+          style="width:50px; height:50px;"
+        >
+          🎵
+        </div>
+
+        <div class="flex-grow-1">
+          <p class="mb-0 fw-semibold">
+            {{ cancion.titulo }}
+          </p>
+          <small class="text-muted">
+            {{ cancion.artista }}
+          </small>
+        </div>
+
+      </li>
+    }
+
+  </ul>
 </div>

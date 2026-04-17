@@ -17,15 +17,16 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/artistas" routerLinkActive="active">Artistas</a>
       </li>
-      </ul>
+    </ul>
 
-    <div class="d-flex mx-lg-4 my-2 my-lg-0 flex-grow-1" style="max-width: 400px;">
+    <div class="position-relative mx-lg-4 my-2 my-lg-0" style="max-width: 400px; flex: 1;">
       <div class="input-group">
         <input 
           #txtBuscar
           type="text" 
           class="form-control form-control-sm" 
           placeholder="Buscar cancion..."
+          (input)="buscar(txtBuscar.value)"
           (keyup.enter)="buscar(txtBuscar.value)">
         <button 
           class="btn btn-outline-warning btn-sm" 
@@ -33,6 +34,24 @@
           (click)="buscar(txtBuscar.value)">
           date papi
         </button>
+      </div>
+
+      <!-- Dropdown de resultados -->
+      <div *ngIf="mostrarResultados && resultados.length > 0" 
+           class="position-absolute w-100 bg-white shadow rounded mt-1"
+           style="z-index: 9999; top: 100%;">
+        <ul class="list-group list-group-flush">
+          @for (cancion of resultados; track cancion.id) {
+            <li class="list-group-item list-group-item-action d-flex align-items-center gap-2" 
+                style="cursor:pointer">
+              <span>🎵</span>
+              <div>
+                <p class="mb-0 fw-semibold text-dark">{{ cancion.titulo }}</p>
+                <small class="text-muted">{{ cancion.artista }}</small>
+              </div>
+            </li>
+          }
+        </ul>
       </div>
     </div>
 
@@ -44,5 +63,3 @@
   </div>
 
 </nav>
-
-<app-buscador [resultados]="resultados"></app-buscador>
