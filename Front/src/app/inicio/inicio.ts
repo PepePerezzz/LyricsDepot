@@ -8,6 +8,7 @@ import { RatingComponent } from '../rating/rating';
   templateUrl: './inicio.html',
   styleUrl: './inicio.css'
 })
+
 export class Inicio {
 
   noticiaDestacada = {
@@ -66,6 +67,8 @@ export class Inicio {
 
   togglePublicidad() {
   this.mostrarPublicidad = !this.mostrarPublicidad;
-}
+  }
+
+
 }
 

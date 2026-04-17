@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
   
-  <a class="navbar-brand fw-bold" routerLink="/"> LyricsDepot</a>
+  <!-- Logo -->
+  <a class="navbar-brand fw-bold" routerLink="/">LyricsDepot</a>
 
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
     <span class="navbar-toggler-icon"></span>
@@ -17,29 +18,21 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/artistas" routerLinkActive="active">Artistas</a>
       </li>
-      </ul>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/noticias" routerLinkActive="active">Noticias</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/buscador" routerLinkActive="active">Buscador</a>
+      </li>
 
-    <div class="d-flex mx-lg-4 my-2 my-lg-0 flex-grow-1" style="max-width: 400px;">
-      <div class="input-group">
-        <input 
-          #txtBuscar
-          type="text" 
-          class="form-control form-control-sm" 
-          placeholder="Buscar cancion..."
-          (keyup.enter)="buscar(txtBuscar.value)">
-        <button 
-          class="btn btn-outline-warning btn-sm" 
-          type="button" 
-          (click)="buscar(txtBuscar.value)">
-          date papi
-        </button>
-      </div>
-    </div>
+      
+    </ul>
 
     <div class="d-flex gap-2">
       <a routerLink="/login" class="btn btn-outline-light btn-sm">Login</a>
       <a routerLink="/registro" class="btn btn-warning btn-sm">Registro</a>
-      <a routerLink="/letra" class="btn btn-success btn-sm">Subir Letra</a>
+      <a routerLink="/subir-letra" class="btn btn-success btn-sm">Subir Letra</a>
     </div>
   </div>
 

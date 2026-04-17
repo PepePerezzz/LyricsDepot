@@ -1,10 +1,7 @@
 const modelM=require("../model/music.model");
 
-
-
 //rutas
 //montar
-
 //subur
 const subirMusica =async (req,res)=>{
     const {titulo,artista,albun,fecha,letra}=req.body;
@@ -101,7 +98,6 @@ const borrarCancion= async(req,res)=>{
     }
  }
 
-
 //buscador Logica
 async function buscador(req,res) {
     const {titulo}= req.body;
@@ -114,7 +110,6 @@ async function buscador(req,res) {
         }
 
         return res.status(200).json({mensaje: "Lista de cancionnes",lista});
-
 
 
     }catch(error){
@@ -132,10 +127,8 @@ async function masLikes(req,res) {
         console.log("Algun error al mostrar los likes");
         return res.status(500).json({mensaje: "Hubo algun error"});
 
-    }
-        
+    }    
 }
-
 
 module.exports = {
     subirMusica,

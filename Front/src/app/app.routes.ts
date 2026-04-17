@@ -9,8 +9,14 @@ export const routes: Routes = [
   { path: 'contacto', loadComponent: () => import('./contacto/contacto').then(m => m.Contacto) },
   { path: 'letra', loadComponent: () => import('./subir-letra/subir-letra').then(m => m.SubirLetra) },
   { path: 'perfil', loadComponent: () => import('./perfil/perfil').then(m => m.Perfil) },
+<<<<<<< HEAD:Front/src/app/app.routes.ts
   { path: 'registro', loadComponent: () => import('./registro/registro').then(m => m.Registro) },
   { path: 'login', loadComponent: () => import('./login/login').then(m => m.Login) },
   { path: '**', loadComponent: () => import('./not-found/not-found').then(m => m.NotFound) }
 
+=======
+  { path: '**', loadComponent: () => import('./not-found/not-found').then(m => m.NotFound) },
+
+  { path: 'subir-letra', loadComponent: () => import('./subir-letra/subir-letra').then(m => m.SubirLetra) }
+>>>>>>> 8e5b458b177fe3924f18db740f6d85b610442ce0:src/app/app.routes.ts
 ];
