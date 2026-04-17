@@ -1,1 +1,6 @@
-<p>buscador works!</p>
+<div>
+  @for (cancion of resultados; track cancion.id) {
+    <p>{{ cancion.titulo }}</p>
+    <p>{{ cancion.artista }}</p>
+  }
+</div>

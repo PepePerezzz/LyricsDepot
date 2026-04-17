@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import {inject, Injectable } from '@angular/core';
 import { Cancion } from '../models/cancion';
 import { Observable,map } from 'rxjs';
+import { BusCancio } from '../interfaces/bus-cancio';
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +17,11 @@ export class Musica {
   postCancion(data: Cancion): Observable<number>{
       return this.http.post<{ idCancion: number}>(`${this.url}/subir`,data).pipe(map((res)=>res.idCancion));
   }
+
+  postBusqueda(titulo: string): Observable<BusCancio[]> {
+  return this.http.post<{lista: BusCancio[]}>(`${this.url}/lista`,{titulo} ).pipe(map(res => res.lista));
+  }
+
 
   getCancionById(id: number): Observable<Cancion> {
     return this.http

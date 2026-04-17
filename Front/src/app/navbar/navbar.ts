@@ -1,28 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Musica } from '../servicios/musica';
+import { BusCancio } from '../interfaces/bus-cancio';
+import { Buscador } from '../buscador/buscador';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive,Buscador],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
 export class Navbar {
-
-  // Inyectamos el router para poder navegar por código
-  constructor(private router: Router) {}
+  private router = inject(Router);
+  private busca = inject(Musica);
+  public resultados: BusCancio[] = [];
 
   buscar(termino: string) {
-    const valor = termino.trim();
-    if (valor.length === 0) return; // No hacer nada si está vacío
-
-    console.log('Buscando:', valor);
+    if (termino.length === 0) return;
     
-    // Redirigimos a la ruta del buscador pasando el término como parámetro
-    // Ejemplo: /buscador?q=lady+gaga
-    this.router.navigate(['/buscador'], {
-      queryParams: { q: valor }
+
+    this.busca.postBusqueda(termino).subscribe({
+      next: (respuesta: BusCancio[]) => {
+        this.resultados = respuesta;
+        this.router.navigate(['/buscador']);
+      }
     });
+    
+  
+  
   }
 }

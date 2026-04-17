@@ -14,7 +14,7 @@ router.delete("/borrar",musica.borrarCancion);
 
 router.post("/gustar",musica.agregarLike);
 
-router.get("/lista",musica.buscador);//lista de canciones
+router.post("/lista",musica.buscador);//lista de canciones
 
 router.get("/favoritas",musica.masLikes);
 
