@@ -31,10 +31,6 @@ const consultarCancion=async (req,res)=>{
     try{
         const cancion= await modelM.consultarCancion(id);
 
-        if(!cancion){
-            return res.status(404).json({mensaje: "cancion No encontrada"});
-
-        }
 
         res.status(200).json({mensaje: "Exito al consultar cancion", cancion});
 
