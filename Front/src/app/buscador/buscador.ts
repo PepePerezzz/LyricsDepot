@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-buscador',
   template: `<h1>Resultados para: {{ terminoBusqueda }}</h1>`
 })
-export class BuscadorComponent implements OnInit {
+export class Buscador implements OnInit {
   terminoBusqueda: string = '';
 
   constructor(private route: ActivatedRoute) {}
