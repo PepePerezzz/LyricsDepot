@@ -1,5 +1,5 @@
 import { Component, inject, HostListener } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Musica } from '../servicios/musica';
 import { BusCancio } from '../interfaces/bus-cancio';
 import { CommonModule } from '@angular/common';
@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class Navbar {
   private busca = inject(Musica);
+  private router = inject(Router);
   public resultados: BusCancio[] = [];
   public mostrarResultados = false;
 
@@ -37,5 +38,11 @@ export class Navbar {
         this.mostrarResultados = true;
       }
     });
+  }
+
+  seleccionar(event: Event, id: number) {
+    event.stopPropagation();
+    this.mostrarResultados = false;
+    this.router.navigate(['/detalle', id]);
   }
 }
