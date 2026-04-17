@@ -6,8 +6,11 @@
       ← Regresar
     </button>
 
-    <!-- HERO (sin imagen porque no existe en BD) -->
+    <!-- HERO -->
     <div class="hero-detalle mb-4 rounded-3 overflow-hidden position-relative bg-dark">
+      @if (img.length > 0) {
+        <img [src]="img[0]" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" style="opacity: 0.5;">
+      }
       <div class="hero-overlay-detalle d-flex align-items-end p-4">
         <div class="text-white">
           <h1 class="fw-bold mb-1">{{ cancion.titulo }}</h1>
@@ -42,7 +45,7 @@
 
     </div>
 
-    <!-- BOTÓN FAVORITO (solo visual por ahora) -->
+    <!-- BOTÓN FAVORITO -->
     <div class="mb-4">
       @if (agregadoAFavoritos) {
         <button class="btn btn-warning" (click)="toggleFavorito()">

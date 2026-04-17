@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Cancion } from '../models/cancion';
 import { RouterLink } from '@angular/router';
 import { Musica } from '../servicios/musica';
+import { Imagenes } from '../servicios/imagenes';
 import { switchMap } from 'rxjs';
 
 @Component({
@@ -14,11 +15,13 @@ import { switchMap } from 'rxjs';
 })
 export class Detalle implements OnInit {
   private musica = inject(Musica);
+  private imagenes = inject(Imagenes);
   private ruta = inject(ActivatedRoute);
   private router = inject(Router);
   private cd = inject(ChangeDetectorRef);
 
   cancion: Cancion | null = null;
+  img: string[] = [];
   mostrarLetraCompleta = false;
   agregadoAFavoritos = false;
 
@@ -26,6 +29,7 @@ export class Detalle implements OnInit {
     this.ruta.paramMap.pipe(
       switchMap(params => {
         this.cancion = null;
+        this.img = [];
         this.mostrarLetraCompleta = false;
         this.agregadoAFavoritos = false;
         const id = Number(params.get('id'));
@@ -34,6 +38,12 @@ export class Detalle implements OnInit {
     ).subscribe({
       next: (data) => {
         this.cancion = data;
+        this.imagenes.getImagenes(data.id).subscribe({
+          next: (imgs) => {
+            this.img = imgs.map(i => i.url);
+            this.cd.detectChanges();
+          }
+        });
         this.cd.detectChanges();
       },
       error: () => {

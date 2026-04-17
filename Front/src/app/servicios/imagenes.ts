@@ -12,6 +12,8 @@ export class Imagenes {
     return this.http.post('http://localhost:3000/imagenes/subir', data);
   }
 
-
+  getImagenes(id: number): Observable<{url: string}[]> {
+    return this.http.get<{url: string}[]>(`http://localhost:3000/imagenes/imagenes/${id}`);
+  }
 
 }

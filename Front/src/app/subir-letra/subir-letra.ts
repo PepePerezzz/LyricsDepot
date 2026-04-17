@@ -82,13 +82,9 @@ darkSwal.fire({
 
           },
           error: () => {
-
-            darkSwal.fire({
-              icon: 'error',
-              title: 'Error al subir imagen',
-              text: 'Intenta nuevamente'
-            });
-
+            setTimeout(() => {
+              this.router.navigate(['/']);
+            }, 2000);
           }
         });
 
