@@ -58,6 +58,12 @@ async function coincidencias(titulo,artista) {
     
 }
 
+async function masLikes() {
+    const [row] = await pool.query("SELECT id, titulo, artista FROM canciones ORDER BY likes DESC LIMIT 10");
+
+    return row;
+}
+
 
 module.exports={
     subirMusica,
@@ -66,6 +72,7 @@ module.exports={
     modificarCancion,
     borrarCancion,
     like,
-    coincidencias
+    coincidencias,
+    masLikes
 
 }
