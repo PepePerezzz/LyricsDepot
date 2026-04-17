@@ -16,13 +16,14 @@
       }
     </div>
 
-    <textarea 
+    <input 
+      type="text"
       name="comentario" 
       [(ngModel)]="ratingData.comentario" 
-      placeholder="Cuéntanos más (opcional)...">
-    </textarea>
+      placeholder="¿Algún comentario adicional? (opcional)"
+      class="input-comentario">
 
-    <button type="submit" [disabled]="ratingData.stars === 0">
+    <button type="submit" [disabled]="!ratingForm.valid || ratingData.stars === 0">
       Enviar Calificación
     </button>
   </form>

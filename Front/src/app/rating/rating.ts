@@ -10,24 +10,26 @@ import Swal from 'sweetalert2';
   styleUrls: ['./rating.css']
 })
 export class RatingComponent {
-  // Modelo para el template-driven form
+  
   ratingData = {
     stars: 0,
     comentario: ''
   };
 
   enviarCalificacion() {
+    // Validar antes de enviar
+    if (this.ratingData.stars === 0) return;
+
     console.log('Calificación recibida:', this.ratingData);
     
-    // Alerta de agradecimiento
     Swal.fire({
       title: '¡Gracias por tu opinión!',
-      text: `Nos diste ${this.ratingData.stars} estrellas. ¡Lo apreciamos!`,
+      text: `Nos diste ${this.ratingData.stars} estrellas.`,
       icon: 'success',
       confirmButtonColor: '#1db954'
+    }).then(() => {
+      // Limpiar después de que el usuario cierre el alert
+      this.ratingData = { stars: 0, comentario: '' };
     });
-
-    // Opcional: Limpiar el formulario después de enviar
-    this.ratingData = { stars: 0, comentario: '' };
   }
 }

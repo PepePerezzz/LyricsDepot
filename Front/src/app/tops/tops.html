@@ -1,25 +1,30 @@
 <div class="container mt-4">
-
   <h4 class="fw-bold mb-3">🎵 Top Canciones</h4>
 
   <div class="card shadow-sm">
     <ul class="list-group list-group-flush">
 
-      @if (canciones.length === 0) {
+      @if (cancionesResource.isLoading()) {
         <li class="list-group-item text-center text-muted">
           Cargando canciones...
         </li>
       }
 
-      @for (cancion of canciones; track cancion.id) {
-        <li class="list-group-item d-flex align-items-center gap-3">
+      @if (cancionesResource.error()) {
+        <li class="list-group-item text-center text-danger">
+          Error al cargar los datos.
+        </li>
+      }
 
+      @for (cancion of cancionesResource.value(); track cancion.id) {
+        <li class="list-group-item d-flex align-items-center gap-3">
           <span class="fw-bold text-muted" style="width:24px">
             {{ cancion.posicion }}
           </span>
 
           <img
-          [src]="cancion.imagen || 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=100&q=80'"            width="50"
+            [src]="cancion.imagen || 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=100&q=80'"
+            width="50"
             height="50"
             class="rounded"
             alt="cover"
@@ -33,11 +38,9 @@
               {{ cancion.artista }}
             </small>
           </div>
-
         </li>
       }
 
     </ul>
   </div>
-
 </div>

@@ -1,36 +1,24 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, resource } from '@angular/core';
 import { Musica } from '../services/musica';
-import { ActivatedRoute } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-tops',
   standalone: true,
-  imports: [],
   templateUrl: './tops.html',
   styleUrl: './tops.css',
 })
-export class Tops implements OnInit {
-
+export class Tops {
   private musica = inject(Musica);
-  private route = inject(ActivatedRoute);
 
-  canciones: any[] = [];
+  cancionesResource = resource({
+    loader: async () => {
+      const data = await lastValueFrom(this.musica.getTopCanciones());
 
-  ngOnInit() {
-    this.cargarTop();
-  }
-
-  cargarTop() {
-    this.musica.getTopCanciones().subscribe({
-      next: (data) => {
-        this.canciones = data.map((c, index) => ({
-          ...c,
-          posicion: index + 1,
-        }));
-      },
-      error: (err) => {
-        console.error(err);
-      }
-    });
-  }
+      return data.map((c, index) => ({
+        ...c,
+        posicion: index + 1,
+      }));
+    }
+  });
 }
