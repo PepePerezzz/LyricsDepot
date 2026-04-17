@@ -46,38 +46,30 @@
           <div class="row g-3 mb-3">
             <div class="col-md-6">
               <label class="form-label fw-semibold">Año</label>
-              <input type="number" class="form-control" formControlName="anio" placeholder="Ej: 2024">
-              @if (enviado && f['anio'].errors) {
+              <input type="number" class="form-control" formControlName="fecha" placeholder="Ej: 2024">
+              @if (enviado && f['fecha'].errors) {
                 <div class="text-danger small mt-1">
-                  @if (f['anio'].errors['required']) { El año es obligatorio. }
-                  @if (f['anio'].errors['min']) { Año mínimo 1900. }
-                  @if (f['anio'].errors['max']) { Año máximo 2026. }
+                  @if (f['fecha'].errors['required']) { El año es obligatorio. }
+                  @if (f['fecha'].errors['min']) { Año mínimo 1900. }
+                  @if (f['fecha'].errors['max']) { Año máximo 2026. }
                 </div>
               }
             </div>
-            <div class="col-md-6">
-              <label class="form-label fw-semibold">Duración</label>
-              <input type="text" class="form-control" formControlName="duracion" placeholder="Ej: 3:45">
-              @if (enviado && f['duracion'].errors) {
-                <div class="text-danger small mt-1">
-                  @if (f['duracion'].errors['required']) { La duración es obligatoria. }
-                  @if (f['duracion'].errors['pattern']) { Formato incorrecto, usa mm:ss. }
-                </div>
-              }
-            </div>
+            
           </div>
 
-          <!-- URL Imagen -->
+          <!-- Álbum -->
           <div class="mb-3">
-            <label class="form-label fw-semibold">URL de imagen</label>
-            <input type="text" class="form-control" formControlName="imagen" placeholder="https://...">
-            @if (enviado && f['imagen'].errors) {
+            <label class="form-label fw-semibold">Álbum</label>
+            <input type="text" class="form-control" formControlName="albun" placeholder="Ej: A Night at the Opera">
+            @if (enviado && f['albun'].errors) {
               <div class="text-danger small mt-1">
-                @if (f['imagen'].errors['required']) { La imagen es obligatoria. }
-                @if (f['imagen'].errors['pattern']) { Debe ser una URL válida. }
+                @if (f['albun'].errors['required']) { El álbum es obligatorio. }
+                @if (f['albun'].errors['minlength']) { Mínimo 2 caracteres. }
               </div>
             }
           </div>
+          
 
           <!-- Letra -->
           <div class="mb-4">
@@ -91,6 +83,12 @@
               </div>
             }
           </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Imagen</label>
+            <input type="file" class="form-control" (change)="onFileChange($event)" accept="image/*">
+          </div>
+
 
           <!-- Botones -->
           <div class="d-flex gap-2">

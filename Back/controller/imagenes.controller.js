@@ -19,7 +19,7 @@ const subirImagen = async (req, res) => {
             fs.renameSync(rutaAntigua, rutaNueva);
         });
 
-        res.send("Imágenes subidas correctamente");
+        res.status(200).send("Imágenes subidas correctamente");
 
     } catch (error) {
         console.error(error);
