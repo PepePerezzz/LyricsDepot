@@ -123,6 +123,18 @@ async function buscador(req,res) {
     }
 }
 
+async function masLikes(req,res) {
+    try{
+        const lista= await modelM.masLikes();
+        return res.status(200).json({mensaje: "Mas Likeadas! ",lista});
+
+    }catch(error){
+        console.log("Algun error al mostrar los likes");
+        return res.status(500).json({mensaje: "Hubo algun error"});
+
+    }
+        
+}
 
 
 module.exports = {
@@ -131,5 +143,6 @@ module.exports = {
     editarCancion,
     borrarCancion,
     agregarLike,
-    buscador
+    buscador, 
+    masLikes
 };
