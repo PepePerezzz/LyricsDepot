@@ -1,0 +1,13 @@
+<form (submit)="registro()" class="container mt-5" style="max-width:400px">
+
+  <h3 class="mb-3 text-center">Registro</h3>
+
+  <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control mb-3" placeholder="Nombre" required>
+
+  <input type="email" [(ngModel)]="correo" name="correo" class="form-control mb-3" placeholder="Correo" required>
+
+  <input type="password" [(ngModel)]="contrasena" name="contrasena" class="form-control mb-3" placeholder="Contraseña" required>
+
+  <button type="submit" class="btn btn-dark w-100">Registrarse</button>
+
+</form>
