@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../servicios/auth';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -26,14 +27,24 @@ export class Registro {
 
     this.auth.registro(data).subscribe({
       next: (res) => {
-        console.log(res);
-        alert('Usuario creado');
-        this.router.navigate(['/login']); 
+      console.log(res);
+      Swal.fire({
+        icon: 'success',
+        title: 'Cuenta creada',
+        text: 'Bienvenido a LyricsDepot',
+        confirmButtonColor: '#000'
+      });        
+      this.router.navigate(['/login']); 
 
       },
       error: (err) => {
         console.log(err);
-        alert('Error al registrar');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: err.error?.mensaje || 'No se pudo registrar',
+          confirmButtonColor: '#000'
+        });
       }
     });
   }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../servicios/auth';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -25,13 +26,22 @@ export class Login {
 
     this.auth.login(data).subscribe({
       next: (res) => {
-        console.log('Login correcto', res);
         localStorage.setItem('usuario', JSON.stringify(res.encontrado));
-        alert('Bienvenido');
+        Swal.fire({
+          icon: 'success',
+          title: 'Sesion iniciada correctamente',
+          text: 'Bienvenido a LyricsDepot',
+          confirmButtonColor: '#000'
+        });  
         this.router.navigate(['/']);
       },
-      error: () => {
-        alert('Credenciales incorrectas');
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: err.error?.mensaje || 'No se pudo iniciar sesion',
+          confirmButtonColor: '#000'
+        });
       }
     });
   }
