@@ -28,8 +28,9 @@
           class="form-control mb-3 input-custom"
           placeholder="Contraseña" required>
 
-        <button type="submit" class="btn btn-dark w-100 btn-register">
+        <button type="submit" (keyup.enter)="registro()" class="btn btn-dark w-100 btn-register">
           Registrarse
+          
         </button>
 
       </form>
