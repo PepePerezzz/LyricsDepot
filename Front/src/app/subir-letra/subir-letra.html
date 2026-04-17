@@ -1,99 +1,69 @@
-<div class="container py-5">
+<div class="container-fluid-dark py-5">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-8 col-lg-6"> <div class="card shadow-lg p-4 border-0">
 
-      <div class="card shadow-sm p-4">
-
-        <div class="mb-4">
-          <h2 class="fw-bold">🎵 Subir letra</h2>
-          <p class="text-muted">Comparte tu canción con el mundo</p>
+        <div class="mb-4 text-center">
+          <h2 class="fw-bold text-white"><span class="text-warning">Subir</span> letra</h2>
+          <p class="text-muted">Comparte tu música con la comunidad de LyricsDepot</p>
         </div>
-
-        @if (exitoso) {
-          <div class="alert alert-success">
-            ✅ Letra subida correctamente. Redirigiendo...
-          </div>
-        }
 
         <form [formGroup]="form" (ngSubmit)="guardar()">
 
-          <!-- Título -->
           <div class="mb-3">
-            <label class="form-label fw-semibold">Título de la canción</label>
+            <label class="form-label">Título de la canción</label>
             <input type="text" class="form-control" formControlName="titulo" placeholder="Ej: Bohemian Rhapsody">
             @if (enviado && f['titulo'].errors) {
               <div class="text-danger small mt-1">
+                <i class="bi bi-exclamation-circle"></i> 
                 @if (f['titulo'].errors['required']) { El título es obligatorio. }
                 @if (f['titulo'].errors['minlength']) { Mínimo 2 caracteres. }
-                @if (f['titulo'].errors['maxlength']) { Máximo 100 caracteres. }
               </div>
             }
           </div>
 
-          <!-- Artista -->
           <div class="mb-3">
-            <label class="form-label fw-semibold">Artista</label>
+            <label class="form-label">Artista</label>
             <input type="text" class="form-control" formControlName="artista" placeholder="Ej: Queen">
             @if (enviado && f['artista'].errors) {
               <div class="text-danger small mt-1">
                 @if (f['artista'].errors['required']) { El artista es obligatorio. }
-                @if (f['artista'].errors['minlength']) { Mínimo 2 caracteres. }
               </div>
             }
           </div>
 
-          <!-- Año y Duración -->
           <div class="row g-3 mb-3">
-            <div class="col-md-6">
-              <label class="form-label fw-semibold">Año</label>
-              <input type="number" class="form-control" formControlName="fecha" placeholder="Ej: 2024">
+            <div class="col-md-4">
+              <label class="form-label">Año</label>
+              <input type="number" class="form-control" formControlName="fecha" placeholder="2026">
               @if (enviado && f['fecha'].errors) {
-                <div class="text-danger small mt-1">
-                  @if (f['fecha'].errors['required']) { El año es obligatorio. }
-                  @if (f['fecha'].errors['min']) { Año mínimo 1900. }
-                  @if (f['fecha'].errors['max']) { Año máximo 2026. }
-                </div>
+                <div class="text-danger small mt-1">Error en año.</div>
               }
             </div>
-            
+            <div class="col-md-8">
+                <label class="form-label">Álbum</label>
+                <input type="text" class="form-control" formControlName="albun" placeholder="Ej: A Night at the Opera">
+            </div>
           </div>
 
-          <!-- Álbum -->
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Álbum</label>
-            <input type="text" class="form-control" formControlName="albun" placeholder="Ej: A Night at the Opera">
-            @if (enviado && f['albun'].errors) {
-              <div class="text-danger small mt-1">
-                @if (f['albun'].errors['required']) { El álbum es obligatorio. }
-                @if (f['albun'].errors['minlength']) { Mínimo 2 caracteres. }
-              </div>
-            }
-          </div>
-          
-
-          <!-- Letra -->
           <div class="mb-4">
-            <label class="form-label fw-semibold">Letra</label>
-            <textarea class="form-control" formControlName="letra" rows="8" placeholder="Escribe la letra aquí..."></textarea>
+            <label class="form-label">Letra completa</label>
+            <textarea class="form-control" formControlName="letra" rows="6" placeholder="Escribe la letra aquí..."></textarea>
             @if (enviado && f['letra'].errors) {
               <div class="text-danger small mt-1">
                 @if (f['letra'].errors['required']) { La letra es obligatoria. }
-                @if (f['letra'].errors['minlength']) { Mínimo 50 caracteres. }
-                @if (f['letra'].errors['maxlength']) { Máximo 5000 caracteres. }
+                @if (f['letra'].errors['minlength']) { Es demasiado corta (mín. 50 carac). }
               </div>
             }
           </div>
 
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Imagen</label>
+          <div class="mb-4">
+            <label class="form-label">Portada del sencillo/álbum</label>
             <input type="file" class="form-control" (change)="onFileChange($event)" accept="image/*">
+            <small class="text-muted mt-1 d-block">Recomendado: JPG o PNG de alta resolución.</small>
           </div>
 
-
-          <!-- Botones -->
-          <div class="d-flex gap-2">
-            <button type="submit" class="btn btn-dark px-4">Subir letra</button>
-            <button type="button" class="btn btn-outline-secondary px-4" (click)="cancelar()">Cancelar</button>
+          <div class="d-grid gap-2"> <button type="submit" class="btn btn-warning py-2 text-dark fw-bold">PUBLICAR LETRA</button>
+            <button type="button" class="btn btn-outline-light py-2" (click)="cancelar()">Cancelar</button>
           </div>
 
         </form>

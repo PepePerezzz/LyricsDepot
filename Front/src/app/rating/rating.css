@@ -1,0 +1,48 @@
+.rating-container {
+  text-align: center;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+.stars {
+  display: flex;
+  flex-direction: row-reverse; /* Truco para que el hover funcione hacia la izquierda */
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.stars input { display: none; } /* Escondemos el radio button real */
+
+.stars label {
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+/* Al pasar el mouse o seleccionar, se pintan de dorado */
+.stars input:checked ~ label,
+.stars label:hover,
+.stars label:hover ~ label {
+  color: #ffca08;
+}
+
+textarea {
+  display: block;
+  margin: 15px auto;
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+button {
+  background: #1db954;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+button:disabled { background: #ccc; }

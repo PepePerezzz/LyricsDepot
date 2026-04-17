@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Musica } from '../servicios/musica';
 import { Cancion } from '../models/cancion';
 import { Imagenes } from '../servicios/imagenes';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-subir-letra',
@@ -36,30 +37,77 @@ export class SubirLetra {
 
   get f() { return this.form.controls; }
 
-  guardar() {
-    this.enviado = true;
+guardar() {
+  this.enviado = true;
 
-    if (this.form.invalid || !this.imagenFile) return;
+const darkSwal = Swal.mixin({
+  background: '#121212',
+  color: '#ffffff',
+  confirmButtonColor: '#facc15',
+  cancelButtonColor: '#333'
+});
+
+darkSwal.fire({
+  title: '¿Publicar letra?',
+  text: 'Se subirá la canción a la plataforma',
+  icon: 'question',
+  showCancelButton: true,
+  confirmButtonText: 'Sí, publicar',
+  cancelButtonText: 'Cancelar'
+}).then((result) => {
+
+  if (result.isConfirmed) {
 
     this.subirCancion.postCancion(this.form.value as Cancion).subscribe({
       next: (id) => {
+
         const formImg = new FormData();
         formImg.append('imagenes', this.imagenFile!);
         formImg.append('id_producto', String(id));
-        console.log('imagen:', this.imagenFile);
-        console.log('id:', id);
 
         this.subirImagen.postImagen(formImg).subscribe({
           next: () => {
-            this.exitoso = true;
-            this.router.navigate(['/']);
+
+            darkSwal.fire({
+              icon: 'success',
+              title: '¡Letra subida!',
+              text: 'Se publicó correctamente',
+              timer: 2000,
+              showConfirmButton: false
+            });
+
+            setTimeout(() => {
+              this.router.navigate(['/']);
+            }, 2000);
+
           },
-          error: (err) => console.error('Error imagen', err)
+          error: () => {
+
+            darkSwal.fire({
+              icon: 'error',
+              title: 'Error al subir imagen',
+              text: 'Intenta nuevamente'
+            });
+
+          }
         });
+
       },
-      error: (err) => console.error('Error canción', err)
+      error: () => {
+
+        darkSwal.fire({
+          icon: 'error',
+          title: 'Error al subir canción',
+          text: 'No se pudo guardar la información'
+        });
+
+      }
     });
+
   }
+
+});
+}
 
   cancelar() {
     this.router.navigate(['/']);

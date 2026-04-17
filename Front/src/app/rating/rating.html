@@ -1,0 +1,29 @@
+<div class="rating-container">
+  <h4>¿Qué te parece nuestra página?</h4>
+
+  <form #ratingForm="ngForm" (ngSubmit)="enviarCalificacion()">
+    
+    <div class="stars">
+      @for (num of [5, 4, 3, 2, 1]; track num) {
+        <input 
+          type="radio" 
+          [id]="'star' + num" 
+          name="stars" 
+          [value]="num" 
+          [(ngModel)]="ratingData.stars"
+          required>
+        <label [for]="'star' + num">★</label>
+      }
+    </div>
+
+    <textarea 
+      name="comentario" 
+      [(ngModel)]="ratingData.comentario" 
+      placeholder="Cuéntanos más (opcional)...">
+    </textarea>
+
+    <button type="submit" [disabled]="ratingData.stars === 0">
+      Enviar Calificación
+    </button>
+  </form>
+</div>

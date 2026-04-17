@@ -1,10 +1,70 @@
+/* Variables para mantener consistencia con tu Navbar */
+:host {
+  --lyrics-dark: #121212;
+  --lyrics-card: #1e1e1e;
+  --lyrics-accent: #ffc107; /* Tu amarillo warning */
+}
+
+/* Fondo general de la página para que no sea blanca */
+.container-fluid {
+  background-color: var(--lyrics-dark);
+  color: white;
+  min-height: 100vh;
+}
+
 .hero-section {
-  height: 450px;
+  height: 500px;
   background-size: cover;
   background-position: center;
+  border-bottom: 3px solid var(--lyrics-accent);
 }
 
 .hero-overlay {
-  height: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  background: linear-gradient(to top, var(--lyrics-dark) 10%, rgba(0,0,0,0.2));
+}
+
+/* Tarjetas Estilo Dark */
+.card {
+  background-color: var(--lyrics-card) !important;
+  color: white !important;
+  border: 1px solid #333 !important;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--lyrics-accent) !important;
+}
+
+/* Lista de canciones */
+.list-group-item {
+  background-color: transparent !important;
+  color: white !important;
+  border-color: #333 !important;
+  transition: background 0.2s;
+}
+
+.list-group-item:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Botones personalizados */
+.btn-outline-dark {
+  color: white !important;
+  border-color: var(--lyrics-accent) !important;
+}
+
+.btn-outline-dark:hover {
+  background-color: var(--lyrics-accent) !important;
+  color: black !important;
+}
+
+/* Texto silenciado en modo oscuro */
+.text-muted {
+  color: #b3b3b3 !important;
+}
+
+.bg-light {
+    background-color: #2a2a2a !important;
+    color: white !important;
 }
