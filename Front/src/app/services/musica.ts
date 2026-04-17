@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable , map} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,12 @@ export class Musica {
   constructor(private http: HttpClient) {}
 
   getTopCanciones(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/canciones`);
-  }
+    return this.http.get<{ lista: any[] }>(
+      `${this.apiUrl}/musica/favoritas`
+    ).pipe(
+      map(res => res.lista)
+    );
+}
 
   getTopArtistas(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/artistas`);

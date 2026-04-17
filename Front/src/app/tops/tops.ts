@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Musica } from '../services/musica';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,25 +9,28 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './tops.html',
   styleUrl: './tops.css',
 })
-export class Tops {
+export class Tops implements OnInit {
+
+  private musica = inject(Musica);
+  private route = inject(ActivatedRoute);
 
   canciones: any[] = [];
-  constructor(
-    private route: ActivatedRoute,
-    private musica: Musica
-  ) {}
-ngOnInit() {
-  this.route.paramMap.subscribe(params => {
-    const tipo = params.get('tipo');
 
+  ngOnInit() {
+    this.cargarTop();
+  }
+
+  cargarTop() {
     this.musica.getTopCanciones().subscribe({
       next: (data) => {
-        this.canciones = data;
+        this.canciones = data.map((c, index) => ({
+          ...c,
+          posicion: index + 1,
+        }));
       },
       error: (err) => {
         console.error(err);
       }
     });
-  });
-}
+  }
 }

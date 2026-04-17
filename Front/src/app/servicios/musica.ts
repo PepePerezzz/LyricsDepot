@@ -22,6 +22,14 @@ export class Musica {
       )
       .pipe(map(res => res.cancion));
   }
+
+getTopCanciones(): Observable<any[]> {
+  return this.http
+    .get<{ mensaje: string; lista: any[] }>(
+      'http://localhost:3000/musica/favoritas'
+    )
+    .pipe(map(res => res.lista));
+}
 }
 
 
