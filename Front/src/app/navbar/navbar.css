@@ -1,0 +1,17 @@
+/* navbar.component.css */
+.search-container {
+  width: 250px; /* O el tamaño que prefieras */
+}
+
+.list-group {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.z-3 {
+  z-index: 1050; /* Para que quede por encima de todo */
+}

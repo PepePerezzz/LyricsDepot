@@ -29,6 +29,27 @@
       
     </ul>
 
+    <div class="search-container position-relative">
+  <input 
+    type="text" 
+    class="form-control rounded-pill" 
+    placeholder="Buscar artista..."
+    [(ngModel)]="searchTerm"
+    (input)="onSearch()">
+
+  @if (resultadosFiltrados.length > 0) {
+    <ul class="list-group position-absolute w-100 shadow-lg mt-1 z-3">
+      @for (artista of resultadosFiltrados; track artista) {
+        <li 
+          class="list-group-item list-group-item-action cursor-pointer"
+          (click)="seleccionarArtista(artista)">
+          <i class="bi bi-search me-2"></i> {{ artista }}
+        </li>
+      }
+    </ul>
+  }
+</div>
+
     <div class="d-flex gap-2">
       <a routerLink="/login" class="btn btn-outline-light btn-sm">Login</a>
       <a routerLink="/registro" class="btn btn-warning btn-sm">Registro</a>

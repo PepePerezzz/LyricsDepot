@@ -1,28 +1,37 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
-  templateUrl: './navbar.html',
-  styleUrl: './navbar.css'
+  imports: [CommonModule, FormsModule],
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css'
 })
-export class Navbar {
+export class NavbarComponent {
+  searchTerm: string = '';
+  // Esto normalmente vendría de un servicio, pero aquí tienes una lista de prueba
+  canciones = ['Taylor Swift', 'Miley Cyrus', 'Harry Styles', 'The Weeknd', 'Bad Bunny', 'Queen'];
+  resultadosFiltrados: string[] = [];
 
-  // Inyectamos el router para poder navegar por código
   constructor(private router: Router) {}
 
-  buscar(termino: string) {
-    const valor = termino.trim();
-    if (valor.length === 0) return; // No hacer nada si está vacío
+  onSearch() {
+    if (this.searchTerm.trim() === '') {
+      this.resultadosFiltrados = [];
+      return;
+    }
+    // Filtramos la lista de canciones según lo que escriben
+    this.resultadosFiltrados = this.canciones.filter(cancion =>
+      cancion.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
 
-    console.log('Buscando:', valor);
-    
-    // Redirigimos a la ruta del buscador pasando el término como parámetro
-    // Ejemplo: /buscador?q=lady+gaga
-    this.router.navigate(['/buscador'], {
-      queryParams: { q: valor }
-    });
+  seleccionarCancion(cancion: string) {
+    this.searchTerm = cancion; // Ponemos el nombre en el input
+    this.resultadosFiltrados = []; // Cerramos el desplegable
+    this.router.navigate(['/buscar', cancion]); // Redirigimos a la búsqueda
   }
 }
