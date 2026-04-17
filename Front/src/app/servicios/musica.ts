@@ -14,6 +14,14 @@ export class Musica {
   postCancion(data: Cancion): Observable<number>{
       return this.http.post<{ idCancion: number}>(`${this.url}/subir`,data).pipe(map((res)=>res.idCancion));
   }
-  
 
+  getCancionById(id: number): Observable<Cancion> {
+    return this.http
+      .get<{ mensaje: string; cancion: Cancion }>(
+        `${this.url}/consulta/${id}`
+      )
+      .pipe(map(res => res.cancion));
+  }
 }
+
+

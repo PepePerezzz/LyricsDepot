@@ -1,11 +1,9 @@
 export interface Cancion {
-  id: number;
-  titulo: string;
-  artista: string;
-  album: string;
-  anio: number;
-  duracion: string;
-  imagen: string;
-  letra: string;
-  genero: string;
+    id: number;
+    titulo: string;
+    artista: string;
+    albun: string;
+    fecha: string;
+    likes: number;
+    letra?: string;
 }

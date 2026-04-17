@@ -5,5 +5,5 @@ export interface Cancion {
     albun: string;
     fecha: string;
     likes: number;
-
+    letra?: string;
 }
