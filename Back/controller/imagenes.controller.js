@@ -39,7 +39,7 @@ const encontrar = (req, res) => {
             .filter(f => f.startsWith(numero)) // solo las que empiecen con el ID
             .map(file => ({
                 filename: file,
-                url: `http://localhost:3000/images/${file}` // URL pública jaja puedes buscarla
+                url: `http://2.24.211.213:3000/images/${file}` // URL pública jaja puedes buscarla
             }));
 
         res.json(filtradas);
