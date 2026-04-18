@@ -7,7 +7,7 @@ import { Observable , map} from 'rxjs';
 })
 export class Musica {
 
-  private apiUrl = 'http://localhost:3000'; // luego lo cambias
+  private apiUrl = 'http://2.24.211.213:3000'; // luego lo cambias
 
   constructor(private http: HttpClient) {}
 

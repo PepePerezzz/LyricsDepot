@@ -9,11 +9,11 @@ export class Imagenes {
   private http = inject(HttpClient);
   
   postImagen(data: FormData): Observable<any> {
-    return this.http.post('http://localhost:3000/imagenes/subir', data);
+    return this.http.post('http://2.24.211.213:3000/imagenes/subir', data);
   }
 
   getImagenes(id: number): Observable<{url: string}[]> {
-    return this.http.get<{url: string}[]>(`http://localhost:3000/imagenes/imagenes/${id}`);
+    return this.http.get<{url: string}[]>(`http://2.24.211.213:3000/imagenes/imagenes/${id}`);
   }
 
 }

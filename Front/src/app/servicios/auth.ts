@@ -7,7 +7,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class AuthService {
 
-  private API = 'http://localhost:3000/usuarios';
+  private API = 'http://2.24.211.213:3000/usuarios';
   private usuarioCambio = new Subject<any>();
   usuarioCambio$ = this.usuarioCambio.asObservable();
 

@@ -12,7 +12,7 @@ import { BusCancio } from '../interfaces/bus-cancio';
 export class Musica {
   private http = inject(HttpClient);
 
-  private url: string = "http://localhost:3000/musica";
+  private url: string = "http://2.24.211.213:3000/musica";
 
   postCancion(data: Cancion): Observable<number>{
       return this.http.post<{ idCancion: number}>(`${this.url}/subir`,data).pipe(map((res)=>res.idCancion));
@@ -34,7 +34,7 @@ export class Musica {
 getTopCanciones(): Observable<any[]> {
   return this.http
     .get<{ mensaje: string; lista: any[] }>(
-      'http://localhost:3000/musica/favoritas'
+      'http://2.24.211.213:3000/musica/favoritas'
     )
     .pipe(map(res => res.lista));
 }
