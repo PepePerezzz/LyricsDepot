@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 
@@ -10,7 +10,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./rating.css']
 })
 export class RatingComponent {
-  // Modelo para el template-driven form
+
+  @Input() tituloCancion: string = '';
+  @Output() calificacionEnviada = new EventEmitter<{stars: number, comentario: string}>();
+
   ratingData = {
     stars: 0,
     comentario: ''
@@ -18,16 +21,16 @@ export class RatingComponent {
 
   enviarCalificacion() {
     console.log('Calificación recibida:', this.ratingData);
-    
-    // Alerta de agradecimiento
+
+    this.calificacionEnviada.emit(this.ratingData);
+
     Swal.fire({
       title: '¡Gracias por tu opinión!',
-      text: `Nos diste ${this.ratingData.stars} estrellas. ¡Lo apreciamos!`,
+      text: `Nos diste ${this.ratingData.stars} estrellas para "${this.tituloCancion}". ¡Lo apreciamos!`,
       icon: 'success',
       confirmButtonColor: '#1db954'
     });
 
-    // Opcional: Limpiar el formulario después de enviar
     this.ratingData = { stars: 0, comentario: '' };
   }
 }

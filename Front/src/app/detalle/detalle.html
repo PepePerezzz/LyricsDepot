@@ -68,6 +68,14 @@
       }
     </div>
 
+    <!-- RATING -->
+<div class="mb-4">
+  <app-rating
+    [tituloCancion]="cancion.titulo"
+    (calificacionEnviada)="onCalificacionEnviada($event)">
+  </app-rating>
+</div>
+
   } @else {
     <div class="alert alert-warning mt-4">
       No se encontró la canción. <a routerLink="/">Volver al inicio</a>
