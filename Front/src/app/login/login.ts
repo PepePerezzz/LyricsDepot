@@ -27,6 +27,7 @@ export class Login {
     this.auth.login(data).subscribe({
       next: (res) => {
         localStorage.setItem('usuario', JSON.stringify(res.encontrado));
+        this.auth.notificarLogin(res.encontrado);
         Swal.fire({
           icon: 'success',
           title: 'Sesion iniciada correctamente',

@@ -1,70 +1,203 @@
-/* Variables para mantener consistencia con tu Navbar */
-:host {
-  --lyrics-dark: #121212;
-  --lyrics-card: #1e1e1e;
-  --lyrics-accent: #ffc107; /* Tu amarillo warning */
+/* inicio.css */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.inicio-page {
+  font-family: 'DM Sans', sans-serif;
+  background: #0e0e18;
+  color: #f0eee8;
 }
 
-/* Fondo general de la página para que no sea blanca */
-.container-fluid {
-  background-color: var(--lyrics-dark);
-  color: white;
-  min-height: 100vh;
-}
-
+/* ── HERO ── */
 .hero-section {
-  height: 500px;
+  height: 75vh;
+  min-height: 420px;
   background-size: cover;
   background-position: center;
-  border-bottom: 3px solid var(--lyrics-accent);
+  background-repeat: no-repeat;
 }
 
 .hero-overlay {
-  background: linear-gradient(to top, var(--lyrics-dark) 10%, rgba(0,0,0,0.2));
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(5, 5, 14, 0.97) 0%,
+    rgba(5, 5, 14, 0.55) 50%,
+    rgba(5, 5, 14, 0.15) 100%
+  );
 }
 
-/* Tarjetas Estilo Dark */
-.card {
-  background-color: var(--lyrics-card) !important;
-  color: white !important;
-  border: 1px solid #333 !important;
-  transition: transform 0.3s ease;
+.hero-titulo {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: #ffffff;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  border-color: var(--lyrics-accent) !important;
+.hero-desc {
+  color: #d4d0c8;
+  font-weight: 400;
+  font-size: 1.1rem;
+  max-width: 600px;
 }
 
-/* Lista de canciones */
-.list-group-item {
-  background-color: transparent !important;
-  color: white !important;
-  border-color: #333 !important;
-  transition: background 0.2s;
+/* ── HEADINGS ── */
+h5.fw-bold { color: #f0eee8; }
+
+/* ── TOPS ── */
+.tops-card {
+  background: #16162a !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
 }
 
-.list-group-item:hover {
-  background-color: rgba(255, 255, 255, 0.05) !important;
+.cancion-row {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+  transition: background 0.15s;
 }
 
-/* Botones personalizados */
-.btn-outline-dark {
-  color: white !important;
-  border-color: var(--lyrics-accent) !important;
+.cancion-row:hover {
+  background: rgba(245,200,66,0.06) !important;
 }
 
-.btn-outline-dark:hover {
-  background-color: var(--lyrics-accent) !important;
-  color: black !important;
+.cancion-titulo {
+  color: #f0eee8;
+  font-size: 0.88rem;
 }
 
-/* Texto silenciado en modo oscuro */
-.text-muted {
-  color: #b3b3b3 !important;
+.cancion-artista {
+  color: #a8a4b8;
+  font-size: 0.78rem;
 }
 
-.bg-light {
-    background-color: #2a2a2a !important;
-    color: white !important;
+.pos-badge {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  background: rgba(255,255,255,0.07);
+  color: #a8a4b8;
+  flex-shrink: 0;
+}
+
+.pos-badge.gold   { background: linear-gradient(135deg,#f5c842,#c9a227); color: #fff; box-shadow: 0 2px 8px rgba(245,200,66,0.35); }
+.pos-badge.silver { background: linear-gradient(135deg,#d0d0d0,#a8a8a8); color: #fff; }
+.pos-badge.bronze { background: linear-gradient(135deg,#cd7f32,#a0522d); color: #fff; }
+
+/* ── NOTICIAS ── */
+.noticia-card {
+  background: #16162a !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.noticia-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.4) !important;
+}
+
+.noticia-titulo {
+  color: #e8e4dc;
+  line-height: 1.4;
+}
+
+.noticia-fecha {
+  color: #8a86a0;
+  font-size: 0.75rem;
+}
+
+/* ── PLATAFORMAS ── */
+.plataforma-card {
+  background: #16162a !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  transition: transform 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.plataforma-card:hover {
+  transform: translateY(-3px);
+}
+
+.plataforma-icon {
+  font-size: 1.8rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+.plataforma-icon.spotify  { background: #1DB954; color: #fff; }
+.plataforma-icon.apple    { background: #fc3c44; color: #fff; }
+.plataforma-icon.youtube  { background: #FF0000; color: #fff; }
+.plataforma-icon.tidal    { background: #00FFFF; color: #000; }
+
+.plataforma-nombre { color: #f0eee8; }
+.plataforma-sub    { color: #8a86a0; font-size: 0.72rem; }
+
+/* ── JOYA ── */
+.joya-card {
+  background: #16162a !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+}
+
+.joya-artista { color: #a8a4b8; }
+.joya-desc    { color: #c8c4bc; line-height: 1.6; }
+
+/* ── DATOS CURIOSOS ── */
+.dato-card {
+  background: #16162a !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+}
+
+.dato-icono { font-size: 1.8rem; flex-shrink: 0; }
+.dato-texto { color: #c8c4bc; line-height: 1.55; }
+
+/* ── SIDEBAR ── */
+.sidebar-heading { color: #f0eee8; border-color: rgba(245,200,66,0.25) !important; }
+
+.ext-link {
+  background: #16162a;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.ext-link:hover {
+  background: #1e1e36;
+  border-color: rgba(245,200,66,0.3);
+  transform: translateX(4px);
+}
+
+.ext-icon  { font-size: 1.4rem; flex-shrink: 0; }
+.ext-titulo { color: #f0eee8; }
+.ext-sub    { color: #8a86a0; font-size: 0.75rem; }
+.ext-arrow  { color: #f5c842; font-size: 0.9rem; flex-shrink: 0; }
+
+.col-lg-4 .card {
+  background: #16162a !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+}
+
+.col-lg-4 h6 { color: #f0eee8; }
+
+/* Anuncios */
+.anuncio-card { background: #16162a !important; }
+.anuncio-marca { color: #f0eee8; font-size: 0.82rem; }
+.anuncio-texto { color: #8a86a0; font-size: 0.75rem; }
+
+/* Botón toggle */
+.btn-outline-secondary {
+  color: #8a86a0 !important;
+  border-color: rgba(255,255,255,0.15) !important;
+}
+
+.btn-outline-secondary:hover {
+  background: rgba(255,255,255,0.05) !important;
+  color: #f0eee8 !important;
 }

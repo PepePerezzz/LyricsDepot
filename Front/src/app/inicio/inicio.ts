@@ -35,9 +35,30 @@ export class Inicio {
   ];
 
   noticias = [
-    { id: 1, titulo: 'Bad Bunny anuncia nuevo álbum para este verano', categoria: 'Lanzamiento', imagen: 'https://picsum.photos/seed/n1/400/200', fecha: '10 Abril 2026' },
-    { id: 2, titulo: 'Los Grammy revelan la lista de nominados 2026', categoria: 'Premios', imagen: 'https://picsum.photos/seed/n2/400/200', fecha: '9 Abril 2026' },
-    { id: 3, titulo: 'Coldplay llega a México en su gira Music of the Spheres', categoria: 'Conciertos', imagen: 'https://picsum.photos/seed/n3/400/200', fecha: '8 Abril 2026' },
+    { 
+      id: 1, 
+      titulo: 'Bad Bunny anuncia nuevo álbum para este verano', 
+      categoria: 'Lanzamiento', 
+      imagen: 'https://picsum.photos/seed/n1/400/200', 
+      fecha: '10 Abril 2026',
+      url: 'https://www.billboard.com/t/bad-bunny/'
+    },
+    { 
+      id: 2, 
+      titulo: 'Los Grammy revelan la lista de nominados 2026', 
+      categoria: 'Premios', 
+      imagen: 'https://picsum.photos/seed/n2/400/200', 
+      fecha: '9 Abril 2026',
+      url: 'https://www.grammy.com'
+    },
+    { 
+      id: 3, 
+      titulo: 'Coldplay llega a México en su gira Music of the Spheres', 
+      categoria: 'Conciertos', 
+      imagen: 'https://picsum.photos/seed/n3/400/200', 
+      fecha: '8 Abril 2026',
+      url: 'https://www.coldplay.com/tour/'
+    },
   ];
 
   datosCuriosos = [
@@ -59,8 +80,8 @@ export class Inicio {
   };
 
   anuncios = [
-    { imagen: 'https://picsum.photos/seed/ad1/300/250', texto: 'Escucha sin límites', marca: 'Spotify Premium' },
-    { imagen: 'https://picsum.photos/seed/ad2/300/250', texto: 'Tu música, en todas partes', marca: 'Apple Music' },
+    { imagen: 'https://i.scdn.co/image/ab67616d0000b27361c0d04269094ca9dfbdd91d', texto: 'Escucha sin límites musica buena', marca: 'LA OBSESION ' , url: 'https://open.spotify.com/intl-es/album/3YBMjrerZLKEWjL31LRSwM'},
+    { imagen: 'https://i.ytimg.com/vi/tKJC3D-Mm5A/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGFwgXChcMA8=&rs=AOn4CLA02pMXriN3uu5roTQjTzN1Oj_zAQ', texto: 'Tu vibra a donde vayas', marca: 'PesoPluma',url: 'https://www.doublepmusic.com/ppdinastiatdp' },
   ];
 
   mostrarPublicidad = true;

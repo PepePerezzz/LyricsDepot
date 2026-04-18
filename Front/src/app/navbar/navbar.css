@@ -1,0 +1,94 @@
+/* navbar.css */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.nav-custom {
+  background: linear-gradient(90deg, #0a0a0f 0%, #12121e 100%) !important;
+  border-bottom: 1px solid rgba(245, 200, 66, 0.15);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.brand-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  color: #f5c842 !important;
+}
+
+.brand-icon {
+  font-size: 1.2rem;
+}
+
+.navbar-brand:hover .brand-text {
+  color: #fff !important;
+  transition: color 0.2s;
+}
+
+/* Nav links */
+.nav-link-custom {
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.7) !important;
+  padding: 6px 14px !important;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-link-custom:hover {
+  color: #f5c842 !important;
+  background: rgba(245, 200, 66, 0.08);
+}
+
+.nav-link-custom.active {
+  color: #f5c842 !important;
+  background: rgba(245, 200, 66, 0.1);
+}
+
+/* Buscador */
+.search-wrapper {
+  max-width: 380px;
+  flex: 1;
+}
+
+.search-addon {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-right: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.8rem;
+}
+
+.search-input {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  border-left: none !important;
+  color: #f0eee8 !important;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+}
+
+.search-input::placeholder {
+  color: rgba(255,255,255,0.3) !important;
+}
+
+.search-input:focus {
+  box-shadow: none !important;
+  border-color: rgba(245,200,66,0.4) !important;
+  background: rgba(245,200,66,0.04) !important;
+}
+
+.search-dropdown {
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Badge usuario */
+.badge.bg-secondary {
+  background: rgba(255,255,255,0.1) !important;
+  color: #f0eee8;
+  font-weight: 400;
+  font-size: 0.82rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px !important;
+}

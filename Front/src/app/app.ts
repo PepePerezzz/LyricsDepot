@@ -9,4 +9,9 @@ import { Navbar } from './navbar/navbar';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {}
+export class App {
+  onLogout() {
+    console.log('Sesión cambió');
+  }
+
+}

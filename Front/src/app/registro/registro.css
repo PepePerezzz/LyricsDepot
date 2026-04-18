@@ -1,10 +1,214 @@
-.hero-section {
+/* registro.css */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.registro-page {
+  font-family: 'DM Sans', sans-serif;
   min-height: 100vh;
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1920&q=80');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* parallax, opcional */
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
-.hero-overlay {
-  min-height: 100vh; /* que el overlay también cubra todo */
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(5,5,10,0.93) 0%, rgba(10,10,20,0.86) 50%, rgba(5,5,10,0.93) 100%);
+  z-index: 0;
 }
+
+/* Notas flotantes */
+.floating-notes { position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+.note { position: absolute; color: #f5c842; opacity: 0.06; animation: floatNote 12s ease-in-out infinite; }
+.n1 { top: 8%;  left: 6%;  font-size: 3rem;   animation-delay: 0s; }
+.n2 { top: 22%; left: 88%; font-size: 2.2rem;  animation-delay: 2s; }
+.n3 { top: 62%; left: 4%;  font-size: 1.8rem;  animation-delay: 4s; }
+.n4 { top: 78%; left: 83%; font-size: 3.5rem;  animation-delay: 1s; }
+.n5 { top: 42%; left: 91%; font-size: 2rem;    animation-delay: 3s; }
+.n6 { top: 88%; left: 14%; font-size: 2.8rem;  animation-delay: 5s; }
+@keyframes floatNote {
+  0%, 100% { transform: translateY(0) rotate(-5deg); opacity: 0.06; }
+  50%       { transform: translateY(-22px) rotate(5deg); opacity: 0.13; }
+}
+
+/* Hero texto */
+.hero-text { animation: slideInLeft 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: #f5c842;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 6vw, 6.2rem);
+  line-height: 0.94;
+  letter-spacing: 0.02em;
+  color: #f0eee8;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #f5c842;
+  position: relative;
+  display: inline-block;
+}
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 2px; left: 0; right: 0;
+  height: 4px;
+  background: #ff4d6d;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: expandLine 1.2s 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+@keyframes expandLine { to { transform: scaleX(1); } }
+
+.hero-sub {
+  font-size: 0.98rem;
+  color: rgba(240,238,232,0.48);
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 40px;
+  max-width: 340px;
+}
+
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.9rem;
+  color: #f5c842;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.7rem;
+  color: rgba(240,238,232,0.38);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.1);
+}
+
+/* Card */
+.form-wrapper {
+  position: relative;
+  animation: slideInRight 0.8s 0.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.card-glow {
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, #c9a227, transparent 50%, #ff4d6d);
+  border-radius: 24px;
+  opacity: 0.28;
+  z-index: 0;
+}
+
+.registro-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(10,10,18,0.84);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 22px !important;
+}
+
+.card-title-custom {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.85rem;
+  letter-spacing: 0.08em;
+  color: #f0eee8;
+  margin: 0 0 4px;
+}
+.card-sub {
+  font-size: 0.8rem;
+  color: rgba(240,238,232,0.38);
+  margin: 0;
+}
+
+/* Vinyl */
+.vinyl-icon {
+  width: 52px; height: 52px;
+  background: conic-gradient(from 0deg, #1a1a1a 0%, #2d2d2d 25%, #1a1a1a 50%, #2d2d2d 75%, #1a1a1a 100%);
+  border-radius: 50%;
+  border: 2.5px solid #c9a227;
+  display: flex; align-items: center; justify-content: center;
+  animation: spinVinyl 8s linear infinite;
+  box-shadow: 0 0 18px rgba(245,200,66,0.2);
+}
+@keyframes spinVinyl { to { transform: rotate(360deg); } }
+.vinyl-center { width: 11px; height: 11px; background: #f5c842; border-radius: 50%; }
+
+/* Inputs */
+.input-wrap { position: relative; }
+.input-icon {
+  position: absolute;
+  left: 14px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 2;
+}
+.input-custom {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 11px;
+  padding: 13px 14px 13px 42px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: #f0eee8;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.input-custom::placeholder { color: rgba(240,238,232,0.3); }
+.input-custom:focus {
+  border-color: #c9a227;
+  background: rgba(245,200,66,0.04);
+  box-shadow: 0 0 0 3px rgba(245,200,66,0.09);
+}
+
+/* Botón */
+.btn-gold {
+  padding: 13px 20px;
+  background: linear-gradient(135deg, #f5c842 0%, #c9a227 100%);
+  border: none;
+  border-radius: 11px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  color: #0a0a0f;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(245,200,66,0.25);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,200,66,0.4); }
+.btn-gold:active { transform: translateY(0); }
+.btn-arrow { font-size: 1.2rem; transition: transform 0.2s; }
+.btn-gold:hover .btn-arrow { transform: translateX(4px); }
+
+/* Link */
+.register-link { font-size: 0.82rem; color: rgba(240,238,232,0.4); }
+.register-link a { color: #f5c842; text-decoration: none; font-weight: 500; }
+.register-link a:hover { color: #f0eee8; }

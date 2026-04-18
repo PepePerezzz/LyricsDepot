@@ -1,24 +1,89 @@
-<div class="container-fluid p-0">
-  <div class="hero-section position-relative"
-       style="background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d');">
-    <div class="hero-overlay d-flex justify-content-center align-items-center">
-      <div class="card shadow-lg p-4" style="width: 350px; background: rgba(255,255,255,0.95); border-radius: 15px;">
-        <h3 class="text-center fw-bold mb-3">Iniciar Sesión</h3>
-        <form (submit)="login()">
-          <div class="mb-3">
-          <label class="form-label">Correo</label>
-            <input type="email" [(ngModel)]="correo" name="correo" class="form-control" required>
+<!-- login.html -->
+<div class="login-page">
+
+  <div class="bg-overlay"></div>
+
+  <div class="floating-notes">
+    <span class="note n1">♪</span>
+    <span class="note n2">♫</span>
+    <span class="note n3">♩</span>
+    <span class="note n4">♬</span>
+    <span class="note n5">♪</span>
+    <span class="note n6">♫</span>
+  </div>
+
+  <div class="container position-relative z-2">
+    <div class="row min-vh-100 align-items-center justify-content-center justify-content-lg-between gap-4 py-5">
+
+      <!-- Hero -->
+      <div class="col-12 col-lg-5 hero-text">
+        <div class="eyebrow">🎵 LyricsDepot</div>
+        <h1 class="hero-title">
+          Bienvenido<br>
+          <span class="highlight">de vuelta</span>
+        </h1>
+        <p class="hero-sub">Inicia sesión y sigue explorando la música que amas</p>
+        <div class="d-flex align-items-center gap-4">
+          <div>
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Letras</div>
           </div>
-          <div class="mb-3">
-            <label class="form-label">Contraseña</label>
-            <input type="password" [(ngModel)]="contrasena" name="contrasena" class="form-control" required>
+          <div class="stat-divider"></div>
+          <div>
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Artistas</div>
           </div>
-          <button class="btn btn-dark w-100">Entrar</button>
-        </form>
-        <div class="text-center mt-3">
-          <small>¿No tienes cuenta? <a routerLink="/registro">Regístrate</a></small>
+          <div class="stat-divider"></div>
+          <div>
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Géneros</div>
+          </div>
         </div>
       </div>
+
+      <!-- Card -->
+      <div class="col-12 col-lg-5 col-xl-4">
+        <div class="form-wrapper">
+          <div class="card-glow"></div>
+          <div class="login-card p-4 p-md-5">
+
+            <div class="text-center mb-4">
+              <div class="vinyl-icon mx-auto mb-3">
+                <div class="vinyl-center"></div>
+              </div>
+              <h4 class="card-title-custom">Iniciar sesión</h4>
+              <p class="card-sub">Accede a tu cuenta</p>
+            </div>
+
+            <form (submit)="login()">
+
+              <div class="input-wrap mb-3">
+                <span class="input-icon">✉️</span>
+                <input type="email" [(ngModel)]="correo" name="correo"
+                  class="input-custom w-100" placeholder="Correo electrónico" required>
+              </div>
+
+              <div class="input-wrap mb-3">
+                <span class="input-icon">🔒</span>
+                <input type="password" [(ngModel)]="contrasena" name="contrasena"
+                  class="input-custom w-100" placeholder="Contraseña" required>
+              </div>
+
+              <button type="submit" class="btn-gold w-100 mt-2">
+                <span>Entrar</span>
+                <span class="btn-arrow">→</span>
+              </button>
+
+            </form>
+
+            <p class="text-center mt-4 register-link">
+              ¿No tienes cuenta? <a routerLink="/registro">Regístrate</a>
+            </p>
+
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

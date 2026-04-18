@@ -1,6 +1,7 @@
-import { Component, inject, HostListener } from '@angular/core';
+import { Component, inject, HostListener, Output, EventEmitter, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Musica } from '../servicios/musica';
+import { AuthService } from '../servicios/auth';
 import { BusCancio } from '../interfaces/bus-cancio';
 import { CommonModule } from '@angular/common';
 
@@ -11,9 +12,14 @@ import { CommonModule } from '@angular/common';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
-export class Navbar {
+export class Navbar implements OnInit {
+
+  @Output() logoutEvent = new EventEmitter<any>();
+
+  usuario: any = null;
   private busca = inject(Musica);
   private router = inject(Router);
+  private auth = inject(AuthService);
   public resultados: BusCancio[] = [];
   public mostrarResultados = false;
 
@@ -23,6 +29,31 @@ export class Navbar {
     if (!target.closest('.position-relative')) {
       this.mostrarResultados = false;
     }
+  }
+
+  ngOnInit() {
+    this.cargarUsuario();
+
+    this.auth.usuarioCambio$.subscribe(usuario => {
+      this.usuario = usuario;
+      this.logoutEvent.emit(usuario);
+    });
+  }
+
+  cargarUsuario() {
+    if (typeof window !== 'undefined' && localStorage) {
+      this.usuario = JSON.parse(localStorage.getItem('usuario') || 'null');
+    } else {
+      this.usuario = null;
+    }
+  }
+
+  logout() {
+    localStorage.removeItem('usuario');
+    this.auth.notificarLogout();
+    this.usuario = null;
+    this.logoutEvent.emit(null); 
+    this.router.navigate(['/login']);
   }
 
   buscar(termino: string) {

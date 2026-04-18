@@ -8,7 +8,8 @@ import Swal from 'sweetalert2';
   selector: 'app-registro',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './registro.html'
+  templateUrl: './registro.html',
+  styleUrls: ['./registro.css']
 })
 export class Registro {
 

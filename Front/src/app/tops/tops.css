@@ -1,0 +1,86 @@
+/* tops.css */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.tops-page {
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #1a1726 0%, #0a0a0f 60%);
+}
+.tops-icon {
+  font-size: 2.2rem;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #f5c842, #c9a227);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(245, 200, 66, 0.35);
+}
+
+.tops-title {
+  color: #f0eee8; /* blanco cálido en vez de oscuro */
+}
+
+.tops-page .text-muted {
+  color: rgba(0,0,0,0.05);
+}
+
+/* Item canción */
+.cancion-item {
+  border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+
+.cancion-item:hover {
+  background: rgba(245, 200, 66, 0.05) !important;
+}
+
+.cancion-item:hover .play-icon {
+  color: #f5c842 !important;
+}
+
+.cancion-titulo {
+  font-size: 0.95rem;
+  color: #12121e;
+}
+
+/* Posición badges */
+.posicion-badge {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #f0efeb;
+  color: #888;
+  flex-shrink: 0;
+}
+
+.posicion-badge.gold {
+  background: linear-gradient(135deg, #f5c842, #c9a227);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(245,200,66,0.4);
+}
+
+.posicion-badge.silver {
+  background: linear-gradient(135deg, #d0d0d0, #a8a8a8);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.posicion-badge.bronze {
+  background: linear-gradient(135deg, #cd7f32, #a0522d);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(160,82,45,0.3);
+}
+
+.play-icon {
+  font-size: 0.75rem;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}

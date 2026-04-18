@@ -1,65 +1,93 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-  
-  <a class="navbar-brand fw-bold" routerLink="/">🎵 LyricsDepot</a>
+<!-- navbar.html -->
+<nav class="navbar navbar-expand-lg navbar-dark px-3 px-lg-4 nav-custom">
 
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+  <a class="navbar-brand fw-bold d-flex align-items-center gap-2" routerLink="/">
+    <span class="brand-icon">🎵</span>
+    <span class="brand-text">LyricsDepot</span>
+  </a>
+
+  <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navMenu">
-    <ul class="navbar-nav me-auto">
+
+    <!-- LINKS -->
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Inicio</a>
+        <a class="nav-link nav-link-custom" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          Inicio
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/tops" routerLinkActive="active">Top Canciones</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/artistas" routerLinkActive="active">Artistas</a>
+        <a class="nav-link nav-link-custom" routerLink="/tops" routerLinkActive="active">
+          Top Canciones
+        </a>
       </li>
     </ul>
 
-    <div class="position-relative mx-lg-4 my-2 my-lg-0" style="max-width: 400px; flex: 1;">
-      <div class="input-group">
-        <input 
+    <!-- BUSCADOR -->
+    <div class="position-relative mx-lg-3 my-2 my-lg-0 search-wrapper">
+      <div class="input-group input-group-sm">
+        <span class="input-group-text search-addon">🔍</span>
+        <input
           #txtBuscar
-          type="text" 
-          class="form-control form-control-sm" 
-          placeholder="Buscar cancion..."
+          type="text"
+          class="form-control search-input"
+          placeholder="Buscar canción..."
           (input)="buscar(txtBuscar.value)"
           (keyup.enter)="buscar(txtBuscar.value)">
-        <button 
-          class="btn btn-outline-warning btn-sm" 
-          type="button" 
+        <button
+          class="btn btn-warning btn-sm px-3 fw-semibold"
+          type="button"
           (click)="buscar(txtBuscar.value)">
-          date papi
+          Buscar
         </button>
       </div>
 
-      <div *ngIf="mostrarResultados && resultados.length > 0" 
-           class="position-absolute w-100 bg-white shadow rounded mt-1"
-           style="z-index: 9999; top: 100%;">
-        <ul class="list-group list-group-flush">
-          @for (cancion of resultados; track cancion.id) {
-            <li class="list-group-item list-group-item-action d-flex align-items-center gap-2" 
-                style="cursor:pointer"
-                (click)="seleccionar($event, cancion.id)">
-              <span>🎵</span>
-              <div>
-                <p class="mb-0 fw-semibold text-dark">{{ cancion.titulo }}</p>
-                <small class="text-muted">{{ cancion.artista }}</small>
-              </div>
-            </li>
-          }
-        </ul>
-      </div>
+      @if (mostrarResultados && resultados.length > 0) {
+        <div class="position-absolute w-100 bg-white shadow-lg rounded-3 mt-1 search-dropdown"
+             style="z-index: 9999; top: 100%;">
+          <ul class="list-group list-group-flush rounded-3">
+            @for (cancion of resultados; track cancion.id) {
+              <li class="list-group-item list-group-item-action d-flex align-items-center gap-2 py-2"
+                  style="cursor:pointer"
+                  (click)="seleccionar($event, cancion.id)">
+                <span class="fs-6">🎵</span>
+                <div>
+                  <p class="mb-0 fw-semibold text-dark small">{{ cancion.titulo }}</p>
+                  <small class="text-muted">{{ cancion.artista }}</small>
+                </div>
+              </li>
+            }
+          </ul>
+        </div>
+      }
     </div>
 
-    <div class="d-flex gap-2">
-      <a routerLink="/login" class="btn btn-outline-light btn-sm">Login</a>
-      <a routerLink="/registro" class="btn btn-warning btn-sm">Registro</a>
-      <a routerLink="/letra" class="btn btn-success btn-sm">Subir Letra</a>
+    <!-- USUARIO / LOGIN -->
+    <div class="d-flex align-items-center gap-2 ms-lg-3 mt-2 mt-lg-0">
+
+      @if (!usuario) {
+        <a routerLink="/login" class="btn btn-outline-light btn-sm px-3">Login</a>
+        <a routerLink="/registro" class="btn btn-warning btn-sm px-3 fw-semibold">Registro</a>
+      }
+
+      @if (usuario) {
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge bg-secondary d-flex align-items-center gap-1 px-3 py-2">
+            👤 {{ usuario.nombre }}
+          </span>
+          <a routerLink="/letra" class="btn btn-success btn-sm px-3">
+            ➕ Subir Letra
+          </a>
+          <button class="btn btn-outline-danger btn-sm px-3" (click)="logout()">
+            Salir
+          </button>
+        </div>
+      }
+
     </div>
+
   </div>
-
 </nav>
